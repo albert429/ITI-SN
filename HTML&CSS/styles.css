@@ -1,0 +1,497 @@
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f3f4f6;
+    color: #111827;
+}
+
+.site-nav {
+    background: #00ff11;
+}
+
+.nav-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+.nav-logo {
+    margin-right: auto;
+}
+
+.nav-logo img {
+    display: block;
+}
+
+.nav-list a {
+    display: block;
+    padding: 14px 16px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.nav-list a:hover {
+    background: #044a07;
+}
+
+.hero-image {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://www.w3schools.com/w3images/forestbridge.jpg");
+    min-height: 50vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+    padding: 24px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 8px 14px;
+    border-radius: 14px;
+    border: 0;
+    background: #facc15;
+    color: #111827;
+    font-size: 15px;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: #d4b315;
+}
+
+.section-title {
+    text-align: center;
+    margin: 32px 0 20px;
+}
+
+.categories {
+    width: min(1050px, 92%);
+    margin: 0 auto 36px;
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.category-card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+    padding: 20px;
+    text-align: center;
+}
+
+.category-emoji {
+    display: block;
+    font-size: 72px;
+    margin-bottom: 12px;
+}
+
+.category-link {
+    color: #15803d;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.category-link:hover {
+    text-decoration: underline;
+}
+
+.page {
+    min-height: calc(100vh - 50px);
+    padding: 28px 40px;
+}
+
+.breadcrumb {
+    color: #6b7280;
+    font-size: 14px;
+    max-width: 1050px;
+    margin: 0 auto 12px;
+}
+
+.page-title {
+    text-align: center;
+    margin: 10px auto 26px;
+    max-width: 1050px;
+}
+
+.products-grid {
+    max-width: 1050px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 26px;
+}
+
+.product-card {
+    position: relative;
+    background: #fff;
+    border-radius: 12px;
+    padding: 18px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    text-align: center;
+}
+
+.product-card:hover {
+    transform: scale(1.05);
+}
+
+.badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 8px;
+    border-radius: 6px;
+}
+
+.badge-blue {
+    background: #2563eb;
+}
+
+.badge-red {
+    background: #dc2626;
+}
+
+.product-emoji {
+    font-size: 64px;
+    margin: 18px 0 6px;
+}
+
+.product-name {
+    margin: 8px 0 10px;
+}
+
+.product-price {
+    font-size: 18px;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 14px;
+}
+
+.muted {
+    font-weight: 400;
+    color: #6b7280;
+    font-size: 14px;
+}
+
+.old-price {
+    color: #9ca3af;
+    text-decoration: line-through;
+    font-weight: 400;
+    margin-right: 6px;
+}
+
+.sale-price {
+    margin-right: 6px;
+}
+
+.cart-btn {
+    width: 100%;
+    border: 0;
+    background: #16a34a;
+    color: #fff;
+    padding: 10px 12px;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.cart-btn:hover {
+    background: #15803d;
+}
+
+.contact-title {
+    text-align: center;
+    margin: 30px auto 26px;
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.contact-card {
+    max-width: 860px;
+    margin: 0 auto 36px;
+    background: #fff;
+    padding: 28px 34px;
+    border-radius: 12px;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+}
+
+.contact-form {
+    display: grid;
+    gap: 18px;
+}
+
+.form-row label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #374151;
+}
+
+.form-row input,
+.form-row textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    font: inherit;
+    background: #fff;
+}
+
+.form-row textarea {
+    resize: vertical;
+}
+
+.form-row input:focus,
+.form-row textarea:focus {
+    outline: none;
+    border-color: #22c55e;
+    box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.18);
+}
+
+.contact-submit {
+    width: 100%;
+    border: 0;
+    background: #2ea44f;
+    color: #fff;
+    padding: 12px 14px;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.gallery-section {
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 0 20px;
+}
+
+.gallery-section h2 {
+    font-size: 32px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.gallery-section p {
+    color: #6b7280;
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 380px);
+    gap: 0;
+    justify-content: center;
+}
+
+.gallery-card {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    margin: 15px;
+    border-radius: 10px;
+
+}
+
+.gallery-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.gallery-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.45) 35%, rgba(0, 0, 0, 0) 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.gallery-name {
+    position: absolute;
+    left: 16px;
+    right: 16px;
+    bottom: 14px;
+    color: #fff;
+    font-weight: 600;
+    z-index: 1;
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.gallery-card:hover::after,
+.gallery-card:hover .gallery-name {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.offers-page {
+    min-height: calc(100vh - 50px);
+    padding: 40px 20px 60px;
+}
+
+.offers-title {
+    text-align: center;
+    font-size: 46px;
+    margin: 20px 0 10px;
+}
+
+.offers-subtitle {
+    text-align: center;
+    color: #6b7280;
+    font-size: 22px;
+    margin: 0 0 50px;
+}
+
+.offers-grid {
+    max-width: 1250px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(420px, 1fr));
+    gap: 22px;
+}
+
+.offer-card {
+    display: flex;
+    border: 2px dashed #d1d5db;
+    border-radius: 16px;
+    overflow: hidden;
+    background: #fff;
+}
+
+.offer-side {
+    min-width: 170px;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    padding: 24px 12px;
+    font-weight: 700;
+}
+
+.offer-green {
+    background: #2eaf5d;
+}
+
+.offer-orange {
+    background: #e78220;
+}
+
+.offer-blue {
+    background: #3f95cf;
+}
+
+.offer-big {
+    font-size: 58px;
+    line-height: 1;
+}
+
+.offer-small {
+    font-size: 36px;
+    line-height: 1;
+}
+
+.offer-content {
+    padding: 26px 28px;
+}
+
+.offer-content h2 {
+    margin: 0 0 10px;
+    font-size: 44px;
+}
+
+.offer-content p {
+    margin: 0 0 18px;
+    font-size: 34px;
+    color: #6b7280;
+}
+
+.coupon-code {
+    display: inline-block;
+    font-size: 36px;
+    font-weight: 700;
+    padding: 8px 20px;
+    border: 2px dashed;
+}
+
+.coupon-green {
+    color: #2eaf5d;
+    border-color: #8fdda9;
+}
+
+.coupon-orange {
+    color: #e78220;
+    border-color: #f3b67b;
+}
+
+.coupon-blue {
+    color: #3f95cf;
+    border-color: #8cc3e8;
+}
+
+.site-footer {
+    margin-top: 24px;
+    padding: 12px;
+    text-align: center;
+    color: gainsboro;
+    background: #000;
+    font-size: 25px;
+}
+
+@media (max-width: 1024px) {
+    .offers-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 680px) {
+    .nav-list {
+        flex-wrap: wrap;
+    }
+
+    .offer-card {
+        flex-direction: column;
+    }
+
+    .offer-side {
+        min-width: auto;
+        width: 100%;
+        padding: 16px 10px;
+    }
+
+    .offers-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .offer-content h2 {
+        font-size: 30px;
+    }
+
+    .offer-content p,
+    .coupon-code {
+        font-size: 24px;
+    }
+}
