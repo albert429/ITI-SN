@@ -104,26 +104,28 @@ function showReport() {
 
   let totalAvailable = 0;
   let totalBorrowed = 0;
+  let totalTimesBorrowed = 0;
   const lines = ['Library Report', '----------------'];
 
   library.forEach((book, index) => {
     totalAvailable += book.availableCopies;
     totalBorrowed += book.borrowedCopies;
+    totalTimesBorrowed += book.borrowCount;
     const status =
       book.availableCopies === 0
         ? 'Out of Stock'
         : book.availableCopies <= 2
-          ? 'Limited'
-          : 'Available';
+        ? 'Limited'
+        : 'Available';
 
     lines.push(
       `${index + 1}. ${book.title}`,
       `   Author: ${book.author}`,
       `   Available: ${book.availableCopies}`,
       `   Borrowed: ${book.borrowedCopies}`,
-      `   Borrow Count: ${book.borrowCount}`,
+      `   Times Borrowed: ${book.borrowCount}`,
       `   Status: ${status}`,
-      '',
+      ''
     );
   });
 
@@ -131,6 +133,7 @@ function showReport() {
     '----------------',
     `Total available: ${totalAvailable}`,
     `Total borrowed: ${totalBorrowed}`,
+    `Total times borrowed: ${totalTimesBorrowed}`
   );
 
   const report = lines.join('\n');
@@ -148,7 +151,7 @@ function showMenu() {
         '2: Borrow Book\n' +
         '3: Return Book\n' +
         '4: Show Library Report\n' +
-        '5: Exit',
+        '5: Exit'
     );
 
     switch (choice) {

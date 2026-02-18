@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- <Input id="input"> </Input>
+    <button onclick="getWeather()">Get Weather</button>
+    <div id="text"></div> -->
+</body>
+
+</html>
+
+
+<script>
+    // function getUser(id) {
+    //     return new Promise((resolve, reject) => {
+    //         setTimeout(() => {
+    //             resolve({ id: id, name: 'Ahmed' });
+    //         }, 10000);
+    //     })
+    // }
+    // // getUser(1).then(user => console.log('user:', user)).catch(err => console.log(err));
+    // async function displayUser() {
+    //     try {
+    //         const user = await getUser(1);
+    //         console.log(user);
+    //     }
+    //     catch (err) {
+    //         console.log(err);
+    //     }
+    // }
+    // displayUser();
+
+    // async function getWeather() {
+    //     const city = document.getElementById("input").value;
+    //     const text = document.getElementById("text");
+    //     text.innerHTML = "Loading...";
+
+    //     try {
+    //         const result = await new Promise((resolve, reject) => {
+    //             setTimeout(() => {
+    //                 if (city === "Paris") {
+    //                     resolve(`The weather in ${city} is sunny`);
+    //                 }
+    //                 else {
+    //                     reject(`Sorry, we don't have weather data for ${city}`);
+    //                 }
+    //             }, 2000);
+    //         });
+
+    //         text.innerHTML = result;
+    //     } catch (err) {
+    //         text.innerHTML = err instanceof Error ? err.message : String(err);
+    //     }
+    // }
+
+    // console.log("Starting...");
+
+    // setTimeout(() => {
+    //     console.log("Timeout ...");
+    // }, 0);
+
+    // Promise.resolve().then(() => {
+    //     console.log("Promise ...");
+    // });
+
+    // console.log("Ending...");
+
+    // fetch('https://jsonplaceholder.typicode.com/posts/1')
+    //     .then(response => response.json())
+    //     .then(data => console.log(data))
+    //     .catch(error => console.error('Error:', error));
+
+    // async function getUserTodosAsync() {
+    //     try {
+    //         const userResponse = await fetch('https://jsonplaceholder.typicode.com/users/3');
+    //         const user = await userResponse.json();
+    //         const todosResponse = await fetch(`https://jsonplaceholder.typicode.com/users/${user.id}/todos`);
+    //         const todos = await todosResponse.json();
+    //         console.log(`User Todos for ${user.name}:`, todos);
+    //     }
+    //     catch (error) {
+    //         console.error('Error:', error);
+    //     }
+    // }
+    // getUserTodosAsync();
+
+    //---------------------------------------------------------------
+
+
+    // fetch("https://jsonplaceholder.typicode.com/todos")
+    //     .then(res => res.json())
+    //     .then(todos => todos.forEach(t => console.log(t.title)));
+
+    //display only the titles of the todos that are longer than 20 characters
+    //count how many todos are completed and how many are not completed
+    // Map todos into an array of objects that only contain the title and completed properties
+
+    fetch("https://jsonplaceholder.typicode.com/todos", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            title: "My New Todo",
+            body: "This is the body of my new todo",
+            userId: 1,
+            completed: false
+        })
+    })
+        .then(res => res.json())
+        .then(data => console.log("New Todo Created:", data));
+
+</script>
