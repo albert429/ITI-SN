@@ -1,0 +1,87 @@
+{
+  "Full Jelly template": {
+    "scope": "xml",
+    "prefix": "full template",
+    "body": [
+      "<?xml version=\"1.0\" encoding=\"utf-8\"?>",
+      "",
+      "<j:jelly xmlns:j=\"jelly:core\" xmlns:g=\"glide\">",
+      "    $0",
+      "</j:jelly>"
+    ],
+    "description": "Complete Jelly XML template with namespaces"
+  },
+  "j:jelly root": {
+    "scope": "xml",
+    "prefix": "j:jelly",
+    "body": [
+      "<j:jelly xmlns:j=\"jelly:core\" xmlns:g=\"glide\">",
+      "    $0",
+      "</j:jelly>"
+    ],
+    "description": "Jelly root element with namespaces"
+  },
+  "j:if": {
+    "scope": "xml",
+    "prefix": "j:if",
+    "body": ["<j:if test=\"$1\">", "    $0", "</j:if>"],
+    "description": "Jelly conditional if"
+  },
+  "j:choose": {
+    "scope": "xml",
+    "prefix": "j:choose",
+    "body": [
+      "<j:choose>",
+      "    <j:when test=\"$1\">",
+      "        $2",
+      "    </j:when>",
+      "    <j:otherwise>",
+      "        $0",
+      "    </j:otherwise>",
+      "</j:choose>"
+    ],
+    "description": "Jelly choose/when/otherwise"
+  },
+  "j:when": {
+    "scope": "xml",
+    "prefix": "j:when",
+    "body": ["<j:when test=\"$1\">", "    $0", "</j:when>"],
+    "description": "Jelly when branch"
+  },
+  "j:otherwise": {
+    "scope": "xml",
+    "prefix": "j:otherwise",
+    "body": ["<j:otherwise>", "    $0", "</j:otherwise>"],
+    "description": "Jelly otherwise branch"
+  },
+  "j:forEach": {
+    "scope": "xml",
+    "prefix": "j:forEach",
+    "body": ["<j:forEach var=\"$1\" items=\"$2\">", "    $0", "</j:forEach>"],
+    "description": "Jelly forEach loop"
+  },
+  "j:set": {
+    "scope": "xml",
+    "prefix": "j:set",
+    "body": ["<j:set var=\"$1\" value=\"$2\"/>"],
+    "description": "Jelly set variable"
+  },
+  "g:evaluate": {
+    "scope": "xml",
+    "prefix": "g:evaluate",
+    "body": ["<g:evaluate object=\"$1\">", "    $0", "</g:evaluate>"],
+    "description": "Glide evaluate (ServiceNow)"
+  },
+  "g:if": {
+    "scope": "xml",
+    "prefix": "g:if",
+    "body": ["<g:if test=\"$1\">", "    $0", "</g:if>"],
+    "description": "Glide conditional if"
+  },
+  "g:forEach": {
+    "scope": "xml",
+    "prefix": "g:forEach",
+    "body": ["<g:forEach var=\"$1\" items=\"$2\">", "    $0", "</g:forEach>"],
+    "description": "Glide forEach loop"
+  }
+}

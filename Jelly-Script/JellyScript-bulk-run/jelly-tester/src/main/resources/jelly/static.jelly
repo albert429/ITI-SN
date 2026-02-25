@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<j:jelly xmlns:j="jelly:core">
+  <j:getStatic var="pi" className="java.lang.Math" field="PI"/>
+  <j:getStatic var="e" className="java.lang.Math" field="E"/>
+  
+  PI value: ${pi}<br/>
+  E value: ${e}<br/>
+  <j:invokeStatic var="maxValue" className="java.lang.Math" method="max">
+    <j:arg value="10" type="int"/>  <!-- Specify the type -->
+    <j:arg value="20" type="int"/>
+  </j:invokeStatic>
+  Max of 10 and 20: ${maxValue}<br/>
+
+
+<j:invokeStatic var="rounded" className="java.lang.Math" method="round">
+    <j:arg value="3.14159" type="int"/>
+  </j:invokeStatic>
+  Rounded PI: ${rounded}
+
+</j:jelly>
