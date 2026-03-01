@@ -52,15 +52,13 @@
             <form name="studentForm" novalidate ng-submit="addStudent()">
                 <label for="studentName" class="form-label">Student Name</label>
                 <input id="studentName" name="studentName" type="text" class="form-control"
-                    placeholder="Enter student name" ng-model="studentName" required ng-minlength="2"
-                    ng-pattern="/^[a-zA-Z\s]+$/">
+                    placeholder="Enter student name" ng-model="studentName" required ng-minlength="2">
 
                 <div class="validation-text"
                     ng-if="studentForm.studentName.$touched && studentForm.studentName.$invalid">
                     <span ng-if="studentForm.studentName.$error.required">Student name is required.</span>
                     <span ng-if="studentForm.studentName.$error.minlength">Student name must be at least 2
                         characters.</span>
-                    <span ng-if="studentForm.studentName.$error.pattern">Only letters and spaces are allowed.</span>
                 </div>
 
                 <button type="submit" class="btn btn-primary mt-3" ng-disabled="studentForm.$invalid">
@@ -97,7 +95,7 @@
 
                 $scope.students.push($scope.studentName.trim());
                 $scope.studentName = '';
-                $scope.studentForm.$setPristine();
+                // $scope.studentForm.$setPristine();
                 $scope.studentForm.$setUntouched();
             };
 

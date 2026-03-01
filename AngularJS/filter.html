@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+</head>
+
+<body ng-app="myApp">
+    <input type="text" ng-model="firstLetterCapital" placeholder="Enter Name">
+    <p>Original: {{ firstLetterCapital }}</p>
+    <p>Filtered: {{ firstLetterCapital | capitalize }}</p>
+
+    <script>
+        angular.module('myApp', [])
+            .filter('capitalize', function () {
+                return function (input) {
+                    if (!input) return '';
+                    return input[0].toUpperCase() + input.slice(1);
+                };
+            });
+    </script>
+</body>
+
+</html>
