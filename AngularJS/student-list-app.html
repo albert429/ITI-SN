@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="studentApp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student List App</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            background: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+
+        .app-container {
+            max-width: 600px;
+            margin: 50px auto;
+        }
+
+        .app-card {
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .app-card h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .student-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .validation-text {
+            color: #dc3545;
+            font-size: 0.9rem;
+            margin-top: 6px;
+        }
+    </style>
+</head>
+
+<body ng-controller="StudentController">
+    <div class="app-container">
+        <div class="app-card">
+            <h2>Student List App</h2>
+
+            <form name="studentForm" novalidate ng-submit="addStudent()">
+                <label for="studentName" class="form-label">Student Name</label>
+                <input id="studentName" name="studentName" type="text" class="form-control"
+                    placeholder="Enter student name" ng-model="studentName" required ng-minlength="2"
+                    ng-pattern="/^[a-zA-Z\s]+$/">
+
+                <div class="validation-text"
+                    ng-if="studentForm.studentName.$touched && studentForm.studentName.$invalid">
+                    <span ng-if="studentForm.studentName.$error.required">Student name is required.</span>
+                    <span ng-if="studentForm.studentName.$error.minlength">Student name must be at least 2
+                        characters.</span>
+                    <span ng-if="studentForm.studentName.$error.pattern">Only letters and spaces are allowed.</span>
+                </div>
+
+                <button type="submit" class="btn btn-primary mt-3" ng-disabled="studentForm.$invalid">
+                    Add Student
+                </button>
+            </form>
+
+            <hr>
+
+            <p class="text-muted" ng-if="students.length === 0">No students added yet.</p>
+
+            <ul class="list-group" ng-if="students.length > 0">
+                <li class="list-group-item student-item" ng-repeat="student in students track by $index">
+                    <span>{{student}}</span>
+                    <button type="button" class="btn btn-danger btn-sm" ng-click="deleteStudent($index)">
+                        Delete
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        var app = angular.module('studentApp', []);
+
+        app.controller('StudentController', function ($scope) {
+            $scope.students = [];
+            $scope.studentName = '';
+
+            $scope.addStudent = function () {
+                if (!$scope.studentName || !$scope.studentName.trim()) {
+                    return;
+                }
+
+                $scope.students.push($scope.studentName.trim());
+                $scope.studentName = '';
+                $scope.studentForm.$setPristine();
+                $scope.studentForm.$setUntouched();
+            };
+
+            $scope.deleteStudent = function (index) {
+                $scope.students.splice(index, 1);
+            };
+        });
+    </script>
+</body>
+
+</html>
