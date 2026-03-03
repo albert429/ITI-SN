@@ -1,0 +1,27 @@
+<div ng-controller="StudentsController" ng-init="loadStudents()" class="container">
+    <h3>Students</h3>
+
+    <p ng-if="loading">Loading students...</p>
+    <p ng-if="!loading && students.length === 0">No students found.</p>
+
+    <div class="table-responsive" ng-if="!loading && students.length > 0">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th ng-repeat="(key, value) in students[0]">{{ key }}</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="student in students track by $index">
+                    <td ng-repeat="(key, value) in students[0]">{{ student[key] }}</td>
+                    <td>
+                        <a class="btn btn-primary btn-xs" ng-href="#!/userdetail/{{ student.id }}"
+                            ng-if="student.id">Details</a>
+                        <span ng-if="!student.id">-</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Management</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid #ccc;
+            border-collapse: collapse;
+            padding: 8px;
+        }
+
+        .high-marks {
+            background-color: #d5f5d1;
+            font-weight: bold;
+        }
+
+        .message {
+            margin-top: 8px;
+            color: #b00020;
+        }
+    </style>
+</head>
+
+<body ng-app="studentApp" ng-controller="StudentController">
+    <div>
+        <input type="text" ng-model="searchText" placeholder="Search by name">
+
+        <select ng-model="sortDescending">
+            <option ng-value="false">Sort marks: Low to High</option>
+            <option ng-value="true">Sort marks: High to Low</option>
+        </select>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Marks</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="student in filteredStudents = (students | filter:{name:searchText} | orderBy:'marks':sortDescending)"
+                ng-class="{'high-marks': student.marks > 80}">
+                <td>{{ student.name }}</td>
+                <td>{{ student.marks }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p class="message" ng-if="filteredStudents.length === 0">No student found</p>
+
+    <script>
+        var app = angular.module('studentApp', [])
+        app.controller('StudentController', function ($scope) {
+            $scope.searchText = '';
+            $scope.sortDescending = false;
+
+            $scope.students = [
+                { name: 'Ahmed', marks: 72 },
+                { name: 'Mona', marks: 88 },
+                { name: 'Kareem', marks: 95 },
+                { name: 'Salma', marks: 64 },
+                { name: 'Omar', marks: 81 }
+            ];
+        });
+    </script>
+</body>
+
+</html>

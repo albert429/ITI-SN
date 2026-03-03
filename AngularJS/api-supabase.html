@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html ng-app="app">
+
+<head>
+    <title>Supabase API</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <style>
+        body {
+            font-family: Arial;
+            padding: 20px;
+        }
+
+        input {
+            padding: 5px;
+            margin: 5px;
+            width: 150px;
+        }
+
+        button {
+            padding: 5px 10px;
+            margin: 5px 0;
+        }
+
+        div {
+            margin: 10px 0;
+        }
+
+        p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+
+<body ng-controller="AppCtrl">
+    <h2>Add User</h2>
+    <input ng-model="form.name" placeholder="Name">
+    <input ng-model="form.email" placeholder="Email">
+    <button ng-click="addUser()">Add</button>
+    <div>{{msg}}</div>
+
+    <h2>Users</h2>
+    <button ng-click="getUsers()">Load</button>
+    <div ng-repeat="user in users">
+        {{user.name}} - {{user.email}} (ID: {{user.id}})
+    </div>
+
+    <script>
+        const app = angular.module('app', []);
+
+        app.service('StudentService', function ($http) {
+            const KEY = 'sb_publishable_82Z8ZOYO4ZVKWQtMSjI1ng_r2eDXfAc';
+            const URL = 'https://tckthreaprjkcuonolel.supabase.co/rest/v1/Students';
+            const headers = {
+                apikey: KEY,
+                Authorization: 'Bearer ' + KEY,
+                'Content-Type': 'application/json'
+            };
+
+            this.getUsers = function () {
+                return $http.get(URL, { headers: headers });
+            };
+
+            this.addUser = function (user) {
+                return $http.post(URL, user, { headers: headers });
+            };
+        });
+
+        app.controller('AppCtrl', function ($scope, StudentService) {
+
+            $scope.form = {};
+            $scope.users = [];
+            $scope.msg = '';
+
+            $scope.getUsers = function () {
+                StudentService.getUsers().then(function (res) {
+                    $scope.users = res.data;
+                });
+            };
+
+            $scope.addUser = function () {
+                StudentService.addUser({
+                    name: $scope.form.name,
+                    email: $scope.form.email
+                }).then(function () {
+                    $scope.msg = 'Added!';
+                    $scope.form = {};
+                    $scope.getUsers();
+                }, function () {
+                    $scope.msg = 'Error!';
+                });
+            };
+
+            $scope.getUsers();
+        });
+    </script>
+</body>
+
+</html>

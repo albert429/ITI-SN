@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-..." crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <title>Loading</title>
+</head>
+
+<body>
+    <div>
+        <div class="container" ng-app="myApp" ng-controller="myController">
+            <div ng-if="loading" class="text-center my-5">
+                <div class="spinner-border" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+    var app = angular.module('myApp', [])
+    app.controller('myController', function ($scope) {
+        $scope.message = "Hello AngularJS!";
+        $scope.loading = true;
+        setTimeout(function () {
+            $scope.$apply(function () {
+                $scope.loading = false;
+            });
+        }, 2000);
+    })
+</script>
+
+</html>

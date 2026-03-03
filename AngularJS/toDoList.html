@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AngularJS Todo Directive</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        input {
+            padding: 6px;
+        }
+
+        button {
+            padding: 6px 10px;
+            margin-left: 6px;
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 0;
+            margin-top: 12px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .done {
+            text-decoration: line-through;
+            color: #777;
+        }
+    </style>
+</head>
+
+<body ng-app="todoApp" ng-controller="MainController">
+    <h2>Todo List (Directive)</h2>
+
+    <todo-list tasks="tasks">
+    </todo-list>
+
+    <p>Total Tasks: {{ tasks.length }}</p>
+    <p>Completed Tasks: {{ getCompletedCount() }}</p>
+
+    <script>
+        var app = angular.module('todoApp', []);
+
+        app.controller('MainController', function ($scope) {
+            $scope.tasks = [
+                { text: 'Read AngularJS basics', completed: false },
+                { text: 'Build directive example', completed: true }
+            ];
+
+            $scope.handleAdd = function (taskText) {
+                console.log('Parent notified: added ->', taskText);
+            };
+
+            $scope.handleDelete = function (task) {
+                console.log('Parent notified: deleted ->', task.text);
+            };
+
+            $scope.handleToggle = function (task) {
+                console.log('Parent notified: toggled ->', task.text, task.completed);
+            };
+
+            $scope.getCompletedCount = function () {
+                var count = 0;
+                angular.forEach($scope.tasks, function (task) {
+                    if (task.completed) {
+                        count++;
+                    }
+                });
+                return count;
+            };
+        });
+
+        app.directive('todoList', function () {
+            return {
+                scope: {
+                    tasks: '='
+                },
+                template:
+                    '<div>' +
+                    '  <input type="text" ng-model="newTask" placeholder="New task">' +
+                    '  <button ng-click="addTask()">Add</button>' +
+                    '  <ul>' +
+                    '    <li ng-repeat="task in tasks track by $index">' +
+                    '      <input type="checkbox" ng-model="task.completed" ng-change="toggleTask(task)"> ' +
+                    '      <span ng-class="{done: task.completed}">{{ task.text }}</span>' +
+                    '      <button ng-click="deleteTask($index)">Delete</button>' +
+                    '    </li>' +
+                    '  </ul>' +
+                    '</div>',
+                link: function (scope) {
+                    scope.newTask = '';
+
+                    scope.addTask = function () {
+                        var text = (scope.newTask || '').trim();
+                        if (!text) {
+                            return;
+                        }
+
+                        var task = { text: text, completed: false };
+                        scope.tasks.push(task);
+                        scope.newTask = '';
+                    };
+
+                    scope.deleteTask = function (index) {
+                        scope.tasks.splice(index, 1);
+                    };
+
+                    scope.toggleTask = function (task) {
+                    };
+                }
+            };
+        });
+    </script>
+</body>
+
+</html>
